@@ -82,18 +82,20 @@ susceptibility maps with an area of applicability, and a check at 50 m and 200 m
 
 ## Code
 
-The pipeline is in `code/`, one script per manuscript section ([code/README.md](code/README.md) lists
-them). It needs NumPy, SciPy, pandas, scikit-learn and Matplotlib, and runs without GDAL. The Earth
+The pipeline is in `code/` ([code/README.md](code/README.md) describes each script). It needs NumPy, SciPy, pandas, scikit-learn and Matplotlib, and runs without GDAL. The Earth
 Engine scripts export the satellite factors onto the same grid. I haven't included the input data or
 the cell tables while the papers are in preparation.
 
 | Step | Scripts |
 |---|---|
-| Grid and study area | `s31_*`, `s21_fig01_study_area.py` |
-| Factors (terrain, geology, land cover, OSM, soil, Earth Engine) | `s32a` to `s32h`, `s32m1` |
-| Factor catalogue and screening | `s32i`, `s32j`, `s32l` |
-| Figures | `s51_*` |
-| Models and cross-validation | `s52_models_rq1.py` |
+| Grid and city outlines | `make_grid.py`, `city_boundary.py` |
+| Factors | `terrain_hydrology.py`, `geology.py`, `landcover_water.py`, `osm_factors.py`, `soil_hsg.py`, `wells_dhaka.py`, `make_gee_script.py` and `gee_export*.js`, `merge_gee.py` |
+| Cell table, catalogue and screening | `build_table.py`, `factor_catalogue.py`, `screening.py`, `table4.py` |
+| Figures | `fig1_study_area.py`, `fig3_factor_maps.py`, `fig_*.py` |
+| Models and cross-validation | `cv_models.py` |
+
+`run_all.py` runs the data steps and the figures in order. The models are run separately with
+`python cv_models.py` because they take about 45 minutes.
 
 ## Reuse
 

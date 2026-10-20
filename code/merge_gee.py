@@ -1,6 +1,6 @@
 """Section 3.2  Merge the Google Earth Engine exports into the cell tables.
 
-usage: python s32h_merge_gee.py [folder]   (default analysis/gee/exports)
+usage: python merge_gee.py [folder]   (default analysis/gee/exports)
 Joins on lattice row/col (exact), derives fill age and change bands, and writes
 analysis/factors/<c>_factors_full.csv; the full-rectangle arrays of every band are added to
 <c>_maps.npz for the maps. Missing themes are reported, not fatal.

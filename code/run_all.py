@@ -6,14 +6,14 @@
 import os, subprocess, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DATA = ['s31_target_lattice.py', 's32a_terrain_hydrology.py', 's32b_geology.py', 's32c_landcover_fill.py',
-        's32d_urban_osm.py', 's32e_ctg_kit_crosscheck.py', 's32e2_soil_hsg.py', 's32m1_wells_dha.py', 's32f_assemble_table.py', 's32g_make_gee_script.py',
-        's32h_merge_gee.py', 's32i_factor_catalogue.py', 's32j_screening.py', 's32l_table4_tex.py']
-FIGS = ['s21_fig01_study_area.py', 's32k_figS_dem_check.py', 's51_fig03_factor_maps.py', 's51_figS_factor_atlas.py',
-        's51_figS_factor_correlation.py', 's51_figS_factor_association.py']
+DATA = ['make_grid.py', 'terrain_hydrology.py', 'geology.py', 'landcover_water.py',
+        'osm_factors.py', 'ctg_kit_check.py', 'soil_hsg.py', 'wells_dhaka.py', 'build_table.py', 'make_gee_script.py',
+        'merge_gee.py', 'factor_catalogue.py', 'screening.py', 'table4.py']
+FIGS = ['fig1_study_area.py', 'fig_dem_check.py', 'fig3_factor_maps.py', 'fig_factor_atlas.py',
+        'fig_factor_correlation.py', 'fig_factor_association.py']
 steps = FIGS if '--figures' in sys.argv else DATA + FIGS
 for s in steps:
-    if s == 's32h_merge_gee.py' and not any(f.endswith('.csv') for f in os.listdir(
+    if s == 'merge_gee.py' and not any(f.endswith('.csv') for f in os.listdir(
             os.path.join(HERE, '..', '..', 'analysis', 'gee', 'exports'))):
         print('skip', s, '(no GEE exports yet)'); continue
     print('==', s, flush=True)

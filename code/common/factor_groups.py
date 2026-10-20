@@ -103,7 +103,7 @@ TRANSFER = {f[0]: f[4] for f in _F}
 LC_CHECK = ['lc_cover', 'pond_share_300', 'dev_share_300', 'built_share_300', 'green_share_300',
             'water_big_share_500', 'dist_pond', 'dist_dev', 'dist_lc_water']
 PS_ONLY = ['bld_density_ps', 'bld_height_ps', 'h23_ob_ps', 'new_share_ps', 'bld_growth_ps']
-# Dhaka borehole/well locations (s32m1_wells_dha.py): a survey network with no type, depth or year,
+# Dhaka borehole/well locations (wells_dhaka.py): a survey network with no type, depth or year,
 # regular rather than clustered (Clark-Evans R = 1.16) and denser in the old core (rho 0.66 with road
 # density); it marks where boreholes were logged, not where water is pumped -> check only
 WELL_CHECK = ['dist_well', 'well_dens_1k', 'well_kde_500']

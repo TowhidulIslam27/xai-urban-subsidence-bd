@@ -108,7 +108,7 @@ def run():
     cells = pd.read_csv(FACTORS / 'dha_factors_full.csv', usecols=['row', 'col', 'has_ps', 'vU', 'E', 'N', 'in_city'])
     cells = cells.merge(add, on=['row', 'col'])
     p = cells[cells.has_ps.astype(bool)]
-    from s32j_screening import trend_r2
+    from screening import trend_r2
     rows = []
     for k in KEYS:
         rho = spearmanr(p[k], p.vU, nan_policy='omit')[0]

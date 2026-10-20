@@ -23,7 +23,7 @@ Metrics   per repeat, on the pooled out-of-fold predictions: R2, RMSE, MAE, Spea
 Output    analysis/models/cv_<c>.csv (one row per city, set, model, repeat), cv_summary.csv,
           step_gain.csv, block_sensitivity.csv, range_check.csv, oof_<c>.csv (gbm, every set,
           repeat 0, with fold ids), table5_cv.tex, table6_gain.tex; Figures/Fig04_cv_skill.png
-usage     python s52_models_rq1.py [--quick]   (--quick: 2 repeats, for testing)
+usage     python cv_models.py [--quick]   (--quick: 2 repeats, for testing)
 """
 import os, sys, time
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "common"))

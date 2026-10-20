@@ -1,5 +1,5 @@
 """Section 5.1, Fig. S (factor correlation)  Spearman correlation between candidate factors at
-PS cells, Dhaka and Chattogram; grey labels = dropped in screening (needs s32j_screening.py).
+PS cells, Dhaka and Chattogram; grey labels = dropped in screening (needs screening.py).
 Output    manuscript/Figures/FigS_factor_correlation.png
 """
 import os, sys

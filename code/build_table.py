@@ -3,7 +3,7 @@
 Joins all factor parts (terrain, hydrology, geology, landcover, osm, ctgkit) with the target
 (vU, vU_se, vU_h2, ...), the building factors of the three-city paper (PS cells only, suffix _ps),
 shared geology classes, 1 km blocks for spatial CV and the vU classes (-2 / -5 mm/yr).
-If analysis/gee/exports holds the GEE CSVs, run s32h_merge_gee.py afterwards.
+If analysis/gee/exports holds the GEE CSVs, run merge_gee.py afterwards.
 Output    analysis/factors/<c>_factors.csv   one row per prediction cell (has_ps = vU available)
           analysis/factors/<c>_maps.npz      2-D factor arrays for the figures
           analysis/factors/<c>_sources.json  which DEM / water source the run used

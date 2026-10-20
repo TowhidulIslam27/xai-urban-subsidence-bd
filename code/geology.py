@@ -6,7 +6,7 @@ Factors   geological unit (cell majority), Holocene share, signed distance to th
           Holocene and older deposits (+ inside the Holocene). The distance is capped at +/-2 km, so it
           describes the contact zone; uncapped it reached 10 km and behaved like a coordinate
           (R2 0.8 against a quadratic trend in E, N). Pixels outside the map polygons are NaN.
-          Shared classes for the transfer test are added in s32f_assemble_table.py.
+          Shared classes for the transfer test are added in build_table.py.
 Output    analysis/factors/parts/<c>_geology.npz
 """
 import os, sys
