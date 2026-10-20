@@ -36,17 +36,26 @@ For each city I built about 64 candidate factors from FABDEM, JRC Global Surface
 Dynamic World, Sentinel-2, Google Open Buildings, GHSL, OpenStreetMap, OpenLandMap, HYSOGs and the
 1:1M geological map of the Geological Survey of Bangladesh, using Python and Earth Engine.
 
+![Factor maps](figures/Fig03_factor_maps.jpg)
+*Fig. 3. Six of the factors, Dhaka next to Chattogram.*
+
 The factors are screened before any model sees vU. Layers coarser than 1 km go, as do near-constant
 or very sparse ones and anything that behaves like a map coordinate. After that, pairs with
 Spearman |rho| above 0.8 and factors with VIF above 10 are thinned out. Dhaka keeps 52 factors and
-Chattogram 45; 40 of them are shared and go into the transfer test.
+Chattogram 45; 40 of them are shared and go into the transfer test. The correlation matrix below
+shows why many were dropped: the building and land-cover layers in particular overlap strongly.
+
+![Factor correlation](figures/FigS_factor_correlation.jpg)
+*Spearman correlation between the candidate factors at the PS cells: Dhaka below the diagonal,
+Chattogram above it. Grey labels are factors dropped in the screening in both cities.*
+
+![Factor association with vU](figures/FigS_factor_association.jpg)
+*Spearman correlation of each factor with vU in the two cities. Open markers are factors dropped in
+the screening.*
 
 For the first question I fitted gradient-boosted trees, a random forest and a linear model on each
 set, with spatial block cross-validation (2 km blocks, 5 folds, 10 repeats). I chose 2 km from the
 residual semivariogram and also ran 1 km and 4 km blocks to see how much the scores move.
-
-![Factor maps](figures/Fig03_factor_maps.jpg)
-*Fig. 3. Six of the factors, Dhaka next to Chattogram.*
 
 ## First results
 
