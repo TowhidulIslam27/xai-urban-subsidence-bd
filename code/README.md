@@ -11,14 +11,14 @@ each script takes city codes as arguments (`python s32b_geology.py dha`).
 | Section | Script | What it does | Output |
 |---|---|---|---|
 | 3.1 / 4.1 | `s31_target_lattice.py` | fits the 100 m lon/lat lattice of the InSAR cells, extended to the city outlines in `analysis/City_Maps`; prediction area = cells within 1 km of a PS cell plus every cell inside the city (northern Chattogram: no PS, other S1 frame; predicted, never trained on) | `analysis/factors/<c>_grid.json`, `parts/<c>_lattice.npz` |
-| 3.2 Terrain and hydrology | `s32a_terrain_hydrology.py` | FABDEM if `analysis/gee/exports/<c>_fabdem.tif` exists, else the provisional SRTM ground proxy; slope, aspect, curvature, TRI, TPI, relief, ERR; priority-flood + D8 → TWI, HAND (≥ 0), depression depth, streams | `parts/<c>_terrain.npz`, `<c>_hydrology.npz` |
+| 3.2 Terrain and hydrology | `s32a_terrain_hydrology.py` | FABDEM if `analysis/gee/exports/<c>_fabdem.tif` exists, else the provisional SRTM ground proxy; slope, aspect, curvature, TRI, TPI, relief, ERR; priority-flood + D8 -> TWI, HAND (≥ 0), depression depth, streams | `parts/<c>_terrain.npz`, `<c>_hydrology.npz` |
 | 3.2 Geology | `s32b_geology.py` | GSB 1:1M units, Holocene share, signed distance to the Holocene contact (±2 km) | `parts/<c>_geology.npz` |
 | 3.2 Land cover, water | `s32c_landcover_fill.py` | 2024 city land cover, coverage-aware and check only: shares (NaN if < 50 % of the window mapped), censored distances; distance to permanent water from the GSW mask (GEE) | `parts/<c>_landcover.npz` |
 | 3.2 Urban load | `s32d_urban_osm.py` | OSM road density, distance to main road, railway; facilities; city-specific: embankment, MRT/expressway (DHA), port (CTG); distances capped at 2 km | `parts/<c>_osm.npz` |
 | 3.2 (check) | `s32e_ctg_kit_crosscheck.py` | Chattogram GLO-30 kit, soil and soil-moisture layers on the lattice | `parts/ctg_ctgkit.npz` |
 | 3.2 (check) | `s32m1_wells_dha.py` | Dhaka borehole/well points (DW001-DW160): distance, 1 km count, 500 m kernel density; check only (survey network, not pumping) | `parts/dha_wells.npz`, columns in the Dhaka tables, `screening/wells_dha_check.csv` |
 | 3.2 / 4.1 | `s32f_assemble_table.py` | joins all parts, target (vU …), paper building factors (_ps), shared geology classes, 1 km CV blocks, vU classes; records the DEM and water source | `analysis/factors/<c>_factors.csv`, `<c>_maps.npz`, `<c>_sources.json` |
-| 3.2 GEE factors | `s32g_make_gee_script.py` → `s32g_gee_export.js` | writes the Earth Engine export script for the lattice; run the .js in the Code Editor | CSVs/tifs in Drive → `analysis/gee/exports` |
+| 3.2 GEE factors | `s32g_make_gee_script.py` -> `s32g_gee_export.js` | writes the Earth Engine export script for the lattice; run the .js in the Code Editor | CSVs/tifs in Drive -> `analysis/gee/exports` |
 | 3.2 GEE factors | `s32h_merge_gee.py` | merges the GEE exports by lattice row/col | `analysis/factors/<c>_factors_full.csv` |
 | 3.2, Table 3 | `s32i_factor_catalogue.py` | catalogue of every factor: source, resolution, status per city, set M0–M3, transfer, flags | `analysis/screening/factor_catalogue.csv` |
 | 3.2 / 5.1, Table 4 | `s32j_screening.py` | on PS cells: resolution > 1 km, no spread, acts as a coordinate (trend R² > 0.7), Spearman \|ρ\| > 0.8, VIF > 10; transfer set | `analysis/screening/screen_<c>.csv`, `kept_factors.csv` |

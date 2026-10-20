@@ -1,7 +1,7 @@
 """Section 3.2  Conditioning factors - Hydrologic soil group (M0), both cities.
 
 Source    HYSOGs250m (Ross et al. 2018), global 250 m (1/480 deg) hydrologic soil groups, from
-          Dataset/HYSOGs250m.tif. The two city windows were cut on the user's computer (the file is
+          Dataset/HYSOGs250m.tif. The two city windows were cut out beforehand (the file is
           570 MB) into analysis/inputs/hysogs/<c>_hysogs.npy + .json (upper-left corner, pixel size).
 Classes   1 A, 2 B, 3 C, 4 D; dual classes 11 A/D, 12 B/D, 13 C/D, 14 D/D (high water table: the
           first letter applies when drained, D when not); 255 = no data.
